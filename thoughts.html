@@ -1,15 +1,9 @@
-<<<<<<< HEAD
----
-layout: home
-# Index page
----
-=======
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My World</title>
+    <title>My World - Posts</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -24,7 +18,7 @@ layout: home
             <ul class="nav-menu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="thoughts.html" class="nav-link">My World</a></li>
+                <li><a href="thoughts.html" class="nav-link active">My World</a></li>
             </ul>
             <div class="hamburger">
                 <span></span>
@@ -35,35 +29,17 @@ layout: home
     </nav>
 
     <main>
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <h1 class="hero-title">My World</h1>
-                <p class="hero-subtitle">Thoughts, experiences, and perspectives on life</p>
-                <div class="hero-buttons">
-                    <a href="thoughts.html" class="btn btn-primary">Explore My World</a>
-                    <a href="about.html" class="btn btn-secondary">About Me</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="abstract-shape"></div>
+        <section class="thoughts-hero">
+            <div class="container">
+                <h1 class="page-title">My World</h1>
+                <p class="page-subtitle">Thoughts, experiences, and perspectives on life</p>
             </div>
         </section>
 
-        <section class="stats-section">
+        <section class="thoughts-section">
             <div class="container">
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <h3 id="posts-count">0</h3>
-                        <p>Posts</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3 id="experience-years">0</h3>
-                        <p>Years Experience</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3 id="readers-count">0</h3>
-                        <p>Readers</p>
-                    </div>
+                <div class="thoughts-grid" id="thoughts-container">
+                    <!-- Posts will be loaded dynamically -->
                 </div>
             </div>
         </section>
@@ -94,4 +70,3 @@ layout: home
     <script src="script.js"></script>
 </body>
 </html> 
->>>>>>> 00717dc (İlk blog yüklemesi)

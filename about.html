@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - My World</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" class="logo-link">
+                    <span class="infinity-logo">∞</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link active">About</a></li>
+                <li><a href="thoughts.html" class="nav-link">My World</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="about-hero">
+            <div class="container">
+                <h1 class="page-title">About Me</h1>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Hello! I'm someone who loves sharing my thoughts and experiences. This site is my personal space where I write about my observations, learnings, and thoughts about life.</p>
+                        <p>Each post reflects an experience or thought that holds special meaning for me. I hope these writings can add something valuable to your life as well.</p>
+                        <p>Through my writing, I explore various aspects of life, from the smallest moments of joy to the profound lessons learned through challenges. Every story, every reflection, is a piece of my journey that I'm sharing with you.</p>
+                    </div>
+                    <div class="about-sidebar">
+                        <div class="profile-section">
+                            <div class="profile-photo">
+                                <img src="images/profile.jpg" alt="Profile Photo" id="profile-image">
+                                <div class="photo-placeholder" id="photo-placeholder">
+                                    <span>📷</span>
+                                    <p>Add Your Photo</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <h3 id="about-posts-count">0</h3>
+                                <p>Posts Written</p>
+                            </div>
+                            <div class="stat-item">
+                                <h3 id="about-experience-years">0</h3>
+                                <p>Years of Experience</p>
+                            </div>
+                            <div class="stat-item">
+                                <h3 id="about-readers-count">0</h3>
+                                <p>Readers Reached</p>
+                            </div>
+                        </div>
+                        <div class="social-media">
+                            <h3>Connect With Me</h3>
+                            <div class="social-links">
+                                <a href="#" class="social-link">
+                                    <span class="social-icon">📧</span>
+                                    <span>Email</span>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <span class="social-icon">🐦</span>
+                                    <span>Twitter</span>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <span class="social-icon">💼</span>
+                                    <span>LinkedIn</span>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <span class="social-icon">📷</span>
+                                    <span>Instagram</span>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <span class="social-icon">📚</span>
+                                    <span>Medium</span>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <span class="social-icon">🎥</span>
+                                    <span>YouTube</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery-section">
+            <div class="container">
+                <h2 class="section-title">My Gallery</h2>
+                <p class="section-subtitle">Capturing moments that inspire and define my journey</p>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="travel">
+                        <img src="images/gallery1.jpg" alt="Gallery Image 1" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <h3>Travel Adventures</h3>
+                            <p>Exploring new places and cultures</p>
+                        </div>
+                        <div class="image-placeholder">
+                            <span>📸</span>
+                            <p>Add Your Photo</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="nature">
+                        <img src="images/gallery2.jpg" alt="Gallery Image 2" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <h3>Nature's Beauty</h3>
+                            <p>Finding peace in natural wonders</p>
+                        </div>
+                        <div class="image-placeholder">
+                            <span>📸</span>
+                            <p>Add Your Photo</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="creativity">
+                        <img src="images/gallery3.jpg" alt="Gallery Image 3" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <h3>Creative Moments</h3>
+                            <p>Expressing through art and creation</p>
+                        </div>
+                        <div class="image-placeholder">
+                            <span>📸</span>
+                            <p>Add Your Photo</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="daily">
+                        <img src="images/gallery4.jpg" alt="Gallery Image 4" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <h3>Daily Life</h3>
+                            <p>Simple moments that matter</p>
+                        </div>
+                        <div class="image-placeholder">
+                            <span>📸</span>
+                            <p>Add Your Photo</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="food">
+                        <img src="images/gallery5.jpg" alt="Gallery Image 5" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <h3>Culinary Adventures</h3>
+                            <p>Tasting life's flavors</p>
+                        </div>
+                        <div class="image-placeholder">
+                            <span>📸</span>
+                            <p>Add Your Photo</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="people">
+                        <img src="images/gallery6.jpg" alt="Gallery Image 6" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <h3>People & Connections</h3>
+                            <p>Relationships that shape us</p>
+                        </div>
+                        <div class="image-placeholder">
+                            <span>📸</span>
+                            <p>Add Your Photo</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="travel">Travel</button>
+                    <button class="filter-btn" data-filter="nature">Nature</button>
+                    <button class="filter-btn" data-filter="creativity">Creativity</button>
+                    <button class="filter-btn" data-filter="daily">Daily Life</button>
+                    <button class="filter-btn" data-filter="food">Food</button>
+                    <button class="filter-btn" data-filter="people">People</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>My World</h3>
+                    <p>A personal space where I share my thoughts and experiences.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="thoughts.html">My World</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 My World. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
