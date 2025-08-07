@@ -1,6 +1,12 @@
 // Post verileri - Buraya yeni postlar ekleyebilirsiniz
 const posts = [
-    // Postlarınızı buraya ekleyebilirsiniz
+    {
+        id: 1,
+        title: "first text",
+        excerpt: "hello world this is my first blog text.",
+        date: "August 7, 2025",
+        content: `<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><title>first text</title></head><body><h1>first text</h1><p>hello world this is my first blog text.</p><a href='index.html'>turn the homepage</a></body></html>`
+    }
 ];
 
 // Sayaç değerleri - Bu değerleri değiştirebilirsiniz
