@@ -63,6 +63,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Galeri filtreleme
     initGalleryFilters();
+    
+    // Photos filtreleme
+    initPhotosFilters();
 
     // Fotoğraf yükleme özelliği
     initPhotoUpload();
@@ -95,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Galeri filtreleme fonksiyonu
 function initGalleryFilters() {
-    const filterBtns = document.querySelectorAll('.filter-btn');
+    const filterBtns = document.querySelectorAll('.gallery-filters .filter-btn');
     const galleryItems = document.querySelectorAll('.gallery-item');
 
     filterBtns.forEach(btn => {
@@ -108,6 +111,34 @@ function initGalleryFilters() {
             const filter = this.getAttribute('data-filter');
             
             galleryItems.forEach(item => {
+                const category = item.getAttribute('data-category');
+                
+                if (filter === 'all' || category === filter) {
+                    item.style.display = 'block';
+                    item.style.animation = 'fadeInUp 0.6s ease-out';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+}
+
+// Photos filtreleme fonksiyonu
+function initPhotosFilters() {
+    const filterBtns = document.querySelectorAll('.photos-filters .filter-btn');
+    const photoItems = document.querySelectorAll('.photo-item');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Aktif buton stilini güncelle
+            filterBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            // Filtreleme
+            const filter = this.getAttribute('data-filter');
+            
+            photoItems.forEach(item => {
                 const category = item.getAttribute('data-category');
                 
                 if (filter === 'all' || category === filter) {

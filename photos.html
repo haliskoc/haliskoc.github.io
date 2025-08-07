@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photos - My World</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" class="logo-link">
+                    <span class="infinity-logo">∞</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="thoughts.html" class="nav-link">My World</a></li>
+                <li><a href="photos.html" class="nav-link active">Photos</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="photos-hero">
+            <div class="container">
+                <h1 class="page-title">Photos</h1>
+                <p class="page-subtitle">Capturing moments that inspire and define my journey</p>
+            </div>
+        </section>
+
+        <section class="photos-section">
+            <div class="container">
+                <div class="photos-grid">
+                    <div class="photo-item" data-category="travel">
+                        <img src="images/gallery1.jpg" alt="Travel Adventures" class="photo-image">
+                        <div class="photo-overlay">
+                            <h3>Travel Adventures</h3>
+                            <p>Exploring new places and cultures</p>
+                        </div>
+                    </div>
+                    
+                    <div class="photo-item" data-category="nature">
+                        <img src="images/gallery2.jpg" alt="Nature's Beauty" class="photo-image">
+                        <div class="photo-overlay">
+                            <h3>Nature's Beauty</h3>
+                            <p>Finding peace in natural wonders</p>
+                        </div>
+                    </div>
+                    
+                    <div class="photo-item" data-category="creativity">
+                        <img src="images/gallery3.jpg" alt="Creative Moments" class="photo-image">
+                        <div class="photo-overlay">
+                            <h3>Creative Moments</h3>
+                            <p>Expressing through art and creation</p>
+                        </div>
+                    </div>
+                    
+                    <div class="photo-item" data-category="daily">
+                        <img src="images/gallery4.jpg" alt="Daily Life" class="photo-image">
+                        <div class="photo-overlay">
+                            <h3>Daily Life</h3>
+                            <p>Simple moments that matter</p>
+                        </div>
+                    </div>
+                    
+                    <div class="photo-item" data-category="food">
+                        <img src="images/gallery5.jpg" alt="Culinary Adventures" class="photo-image">
+                        <div class="photo-overlay">
+                            <h3>Culinary Adventures</h3>
+                            <p>Tasting life's flavors</p>
+                        </div>
+                    </div>
+                    
+                    <div class="photo-item" data-category="people">
+                        <img src="images/gallery6.jpg" alt="People & Connections" class="photo-image">
+                        <div class="photo-overlay">
+                            <h3>People & Connections</h3>
+                            <p>Relationships that shape us</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="photos-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="travel">Travel</button>
+                    <button class="filter-btn" data-filter="nature">Nature</button>
+                    <button class="filter-btn" data-filter="creativity">Creativity</button>
+                    <button class="filter-btn" data-filter="daily">Daily Life</button>
+                    <button class="filter-btn" data-filter="food">Food</button>
+                    <button class="filter-btn" data-filter="people">People</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>My World</h3>
+                    <p>A personal space where I share my thoughts and experiences.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="thoughts.html">My World</a></li>
+                        <li><a href="photos.html">Photos</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 My World. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
