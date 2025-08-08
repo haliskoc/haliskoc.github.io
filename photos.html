@@ -3,85 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Photos - Capturing moments that inspire and define my journey through visual storytelling">
+    <meta name="keywords" content="photos, gallery, moments, visual, storytelling, journey, memories">
+    <meta name="author" content="My World">
+    <meta name="theme-color" content="#667eea">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Photos - My World">
+    <meta property="og:description" content="Capturing moments that inspire and define my journey through visual storytelling">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Photos - My World">
+    <meta name="twitter:description" content="Capturing moments that inspire and define my journey through visual storytelling">
+    <meta name="twitter:image" content="">
+    
     <title>Photos - My World</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>∞</text></svg>">
 </head>
 <body>
-    <nav class="navbar">
+    <!-- Modern Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="index.html" class="logo-link">
-                    <span class="infinity-logo">∞</span>
+                <a href="index.html" class="logo-link" aria-label="Home">
+                    <span class="infinity-logo" aria-hidden="true">∞</span>
                 </a>
             </div>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="thoughts.html" class="nav-link">My World</a></li>
-                <li><a href="photos.html" class="nav-link active">Photos</a></li>
+            <ul class="nav-menu" role="menubar">
+                <li role="none"><a href="index.html" class="nav-link" role="menuitem">Home</a></li>
+                <li role="none"><a href="about.html" class="nav-link" role="menuitem">About</a></li>
+                <li role="none"><a href="thoughts.html" class="nav-link" role="menuitem">My World</a></li>
+                <li role="none"><a href="photos.html" class="nav-link active" role="menuitem" aria-current="page">Photos</a></li>
             </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
         </div>
     </nav>
 
-    <main>
-        <section class="photos-hero">
+    <main role="main">
+        <!-- Modern Photos Hero Section -->
+        <section class="photos-hero" aria-labelledby="photos-title">
             <div class="container">
-                <h1 class="page-title">Photos</h1>
+                <h1 id="photos-title" class="page-title">Photos</h1>
                 <p class="page-subtitle">Capturing moments that inspire and define my journey</p>
             </div>
         </section>
 
-        <section class="photos-section">
+        <!-- Modern Photos Section -->
+        <section class="photos-section" aria-labelledby="gallery-title">
             <div class="container">
-                <div class="photos-grid">
-                    <div class="photo-item" data-category="travel">
-                        <img src="images/gallery1.jpg" alt="Travel Adventures" class="photo-image">
+                <h2 id="gallery-title" class="sr-only">Photo Gallery</h2>
+                <div class="photos-grid" role="list" aria-label="Photo gallery">
+                    <div class="photo-item" data-category="travel" role="listitem">
+                        <img src="images/gallery1.jpg" alt="Travel Adventures - Exploring new places and cultures" class="photo-image">
                         <div class="photo-overlay">
                             <h3>Travel Adventures</h3>
                             <p>Exploring new places and cultures</p>
                         </div>
                     </div>
                     
-                    <div class="photo-item" data-category="nature">
-                        <img src="images/gallery2.jpg" alt="Nature's Beauty" class="photo-image">
+                    <div class="photo-item" data-category="nature" role="listitem">
+                        <img src="images/gallery2.jpg" alt="Nature's Beauty - Finding peace in natural wonders" class="photo-image">
                         <div class="photo-overlay">
                             <h3>Nature's Beauty</h3>
                             <p>Finding peace in natural wonders</p>
                         </div>
                     </div>
                     
-                    <div class="photo-item" data-category="creativity">
-                        <img src="images/gallery3.jpg" alt="Creative Moments" class="photo-image">
+                    <div class="photo-item" data-category="creativity" role="listitem">
+                        <img src="images/gallery3.jpg" alt="Creative Moments - Expressing through art and creation" class="photo-image">
                         <div class="photo-overlay">
                             <h3>Creative Moments</h3>
                             <p>Expressing through art and creation</p>
                         </div>
                     </div>
                     
-                    <div class="photo-item" data-category="daily">
-                        <img src="images/gallery4.jpg" alt="Daily Life" class="photo-image">
+                    <div class="photo-item" data-category="daily" role="listitem">
+                        <img src="images/gallery4.jpg" alt="Daily Life - Simple moments that matter" class="photo-image">
                         <div class="photo-overlay">
                             <h3>Daily Life</h3>
                             <p>Simple moments that matter</p>
                         </div>
                     </div>
                     
-                    <div class="photo-item" data-category="food">
-                        <img src="images/gallery5.jpg" alt="Culinary Adventures" class="photo-image">
+                    <div class="photo-item" data-category="food" role="listitem">
+                        <img src="images/gallery5.jpg" alt="Culinary Adventures - Tasting life's flavors" class="photo-image">
                         <div class="photo-overlay">
                             <h3>Culinary Adventures</h3>
                             <p>Tasting life's flavors</p>
                         </div>
                     </div>
                     
-                    <div class="photo-item" data-category="people">
-                        <img src="images/gallery6.jpg" alt="People & Connections" class="photo-image">
+                    <div class="photo-item" data-category="people" role="listitem">
+                        <img src="images/gallery6.jpg" alt="People & Connections - Relationships that shape us" class="photo-image">
                         <div class="photo-overlay">
                             <h3>People & Connections</h3>
                             <p>Relationships that shape us</p>
@@ -89,20 +120,23 @@
                     </div>
                 </div>
 
-                <div class="photos-filters">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="travel">Travel</button>
-                    <button class="filter-btn" data-filter="nature">Nature</button>
-                    <button class="filter-btn" data-filter="creativity">Creativity</button>
-                    <button class="filter-btn" data-filter="daily">Daily Life</button>
-                    <button class="filter-btn" data-filter="food">Food</button>
-                    <button class="filter-btn" data-filter="people">People</button>
+                <!-- Modern Photo Filters -->
+                <div class="photos-filters" role="group" aria-labelledby="filter-title">
+                    <h3 id="filter-title" class="sr-only">Filter photos by category</h3>
+                    <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+                    <button class="filter-btn" data-filter="travel" aria-pressed="false">Travel</button>
+                    <button class="filter-btn" data-filter="nature" aria-pressed="false">Nature</button>
+                    <button class="filter-btn" data-filter="creativity" aria-pressed="false">Creativity</button>
+                    <button class="filter-btn" data-filter="daily" aria-pressed="false">Daily Life</button>
+                    <button class="filter-btn" data-filter="food" aria-pressed="false">Food</button>
+                    <button class="filter-btn" data-filter="people" aria-pressed="false">People</button>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
+    <!-- Modern Footer -->
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
@@ -111,7 +145,7 @@
                 </div>
                 <div class="footer-section">
                     <h4>Quick Links</h4>
-                    <ul>
+                    <ul role="list">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="thoughts.html">My World</a></li>
@@ -125,7 +159,24 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Modern Scripts -->
+    <script src="script.js" defer></script>
+    
+    <!-- Screen reader only class -->
+    <style>
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
 </body>
 </html>
+
 

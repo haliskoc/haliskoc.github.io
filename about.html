@@ -3,35 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Me - Learn more about my journey, experiences, and what drives me to share my thoughts and perspectives">
+    <meta name="keywords" content="about, personal, journey, experience, thoughts, blog">
+    <meta name="author" content="My World">
+    <meta name="theme-color" content="#667eea">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="About - My World">
+    <meta property="og:description" content="Learn more about my journey, experiences, and what drives me to share my thoughts and perspectives">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About - My World">
+    <meta name="twitter:description" content="Learn more about my journey, experiences, and what drives me to share my thoughts and perspectives">
+    <meta name="twitter:image" content="">
+    
     <title>About - My World</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>∞</text></svg>">
 </head>
 <body>
-    <nav class="navbar">
+    <!-- Modern Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="index.html" class="logo-link">
-                    <span class="infinity-logo">∞</span>
+                <a href="index.html" class="logo-link" aria-label="Home">
+                    <span class="infinity-logo" aria-hidden="true">∞</span>
                 </a>
             </div>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="about.html" class="nav-link active">About</a></li>
-                <li><a href="thoughts.html" class="nav-link">My World</a></li>
+            <ul class="nav-menu" role="menubar">
+                <li role="none"><a href="index.html" class="nav-link" role="menuitem">Home</a></li>
+                <li role="none"><a href="about.html" class="nav-link active" role="menuitem" aria-current="page">About</a></li>
+                <li role="none"><a href="thoughts.html" class="nav-link" role="menuitem">My World</a></li>
+                <li role="none"><a href="photos.html" class="nav-link" role="menuitem">Photos</a></li>
             </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
         </div>
     </nav>
 
-    <main>
-        <section class="about-hero">
+    <main role="main">
+        <!-- Modern About Hero Section -->
+        <section class="about-hero" aria-labelledby="about-title">
             <div class="container">
-                <h1 class="page-title">About Me</h1>
+                <h1 id="about-title" class="page-title">About Me</h1>
                 <div class="about-content">
                     <div class="about-text">
                         <p>Hello! I'm someone who loves sharing my thoughts and experiences. This site is my personal space where I write about my observations, learnings, and thoughts about life.</p>
@@ -39,30 +69,33 @@
                         <p>Through my writing, I explore various aspects of life, from the smallest moments of joy to the profound lessons learned through challenges. Every story, every reflection, is a piece of my journey that I'm sharing with you.</p>
                     </div>
                     <div class="about-sidebar">
-
-                        <div class="about-stats">
-                            <div class="stat-item">
-                                <h3 id="about-posts-count">0</h3>
+                        <!-- Modern Stats Section -->
+                        <div class="about-stats" role="list" aria-labelledby="stats-title">
+                            <h2 id="stats-title" class="sr-only">My Statistics</h2>
+                            <div class="stat-item" role="listitem">
+                                <h3 id="about-posts-count" aria-label="Number of posts written">0</h3>
                                 <p>Posts Written</p>
                             </div>
-                            <div class="stat-item">
-                                <h3 id="about-experience-years">0</h3>
+                            <div class="stat-item" role="listitem">
+                                <h3 id="about-experience-years" aria-label="Years of experience">0</h3>
                                 <p>Years of Experience</p>
                             </div>
-                            <div class="stat-item">
-                                <h3 id="about-readers-count">0</h3>
+                            <div class="stat-item" role="listitem">
+                                <h3 id="about-readers-count" aria-label="Number of readers reached">0</h3>
                                 <p>Readers Reached</p>
                             </div>
                         </div>
-                        <div class="social-media">
-                            <h3>Connect With Me</h3>
-                            <div class="social-links">
-                                <a href="https://www.linkedin.com/in/halis-ko%C3%A7-422a1a347/" class="social-link" target="_blank">
-                                    <span class="social-icon">💼</span>
+                        
+                        <!-- Modern Social Media Section -->
+                        <div class="social-media" aria-labelledby="social-title">
+                            <h3 id="social-title">Connect With Me</h3>
+                            <div class="social-links" role="list">
+                                <a href="https://www.linkedin.com/in/halis-ko%C3%A7-422a1a347/" class="social-link" target="_blank" rel="noopener noreferrer" role="listitem" aria-label="Visit my LinkedIn profile">
+                                    <span class="social-icon" aria-hidden="true">💼</span>
                                     <span>LinkedIn</span>
                                 </a>
-                                <a href="https://x.com/halis112358" class="social-link" target="_blank">
-                                    <span class="social-icon">🐦</span>
+                                <a href="https://x.com/halis112358" class="social-link" target="_blank" rel="noopener noreferrer" role="listitem" aria-label="Follow me on X (Twitter)">
+                                    <span class="social-icon" aria-hidden="true">🐦</span>
                                     <span>X (Twitter)</span>
                                 </a>
                             </div>
@@ -71,11 +104,10 @@
                 </div>
             </div>
         </section>
-
-
     </main>
 
-    <footer class="footer">
+    <!-- Modern Footer -->
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
@@ -84,7 +116,7 @@
                 </div>
                 <div class="footer-section">
                     <h4>Quick Links</h4>
-                    <ul>
+                    <ul role="list">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="thoughts.html">My World</a></li>
@@ -98,6 +130,22 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Modern Scripts -->
+    <script src="script.js" defer></script>
+    
+    <!-- Screen reader only class -->
+    <style>
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
 </body>
 </html> 

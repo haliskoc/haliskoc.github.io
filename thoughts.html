@@ -3,50 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="My World - Explore my thoughts, experiences, and perspectives on life through personal blog posts">
+    <meta name="keywords" content="blog, thoughts, experiences, personal, life, perspectives, writing">
+    <meta name="author" content="My World">
+    <meta name="theme-color" content="#667eea">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="My World - Posts">
+    <meta property="og:description" content="Explore my thoughts, experiences, and perspectives on life through personal blog posts">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="My World - Posts">
+    <meta name="twitter:description" content="Explore my thoughts, experiences, and perspectives on life through personal blog posts">
+    <meta name="twitter:image" content="">
+    
     <title>My World - Posts</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>∞</text></svg>">
 </head>
 <body>
-    <nav class="navbar">
+    <!-- Modern Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="index.html" class="logo-link">
-                    <span class="infinity-logo">∞</span>
+                <a href="index.html" class="logo-link" aria-label="Home">
+                    <span class="infinity-logo" aria-hidden="true">∞</span>
                 </a>
             </div>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="thoughts.html" class="nav-link active">My World</a></li>
-                <li><a href="photos.html" class="nav-link">Photos</a></li>
+            <ul class="nav-menu" role="menubar">
+                <li role="none"><a href="index.html" class="nav-link" role="menuitem">Home</a></li>
+                <li role="none"><a href="about.html" class="nav-link" role="menuitem">About</a></li>
+                <li role="none"><a href="thoughts.html" class="nav-link active" role="menuitem" aria-current="page">My World</a></li>
+                <li role="none"><a href="photos.html" class="nav-link" role="menuitem">Photos</a></li>
             </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
         </div>
     </nav>
 
-    <main>
-        <section class="thoughts-hero">
+    <main role="main">
+        <!-- Modern Thoughts Hero Section -->
+        <section class="thoughts-hero" aria-labelledby="thoughts-title">
             <div class="container">
-                <h1 class="page-title">My World</h1>
+                <h1 id="thoughts-title" class="page-title">My World</h1>
                 <p class="page-subtitle">Thoughts, experiences, and perspectives on life</p>
             </div>
         </section>
 
-        <section class="thoughts-section">
+        <!-- Modern Thoughts Section -->
+        <section class="thoughts-section" aria-labelledby="posts-title">
             <div class="container">
-                <div class="thoughts-grid" id="thoughts-container">
+                <h2 id="posts-title" class="sr-only">Blog Posts</h2>
+                <div class="thoughts-grid" id="thoughts-container" role="list" aria-label="Blog posts">
                     <!-- Posts will be loaded dynamically -->
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
+    <!-- Modern Footer -->
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
@@ -55,8 +87,9 @@
                 </div>
                 <div class="footer-section">
                     <h4>Quick Links</h4>
-                    <ul>
+                    <ul role="list">
                         <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
                         <li><a href="thoughts.html">My World</a></li>
                         <li><a href="photos.html">Photos</a></li>
                     </ul>
@@ -68,6 +101,22 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Modern Scripts -->
+    <script src="script.js" defer></script>
+    
+    <!-- Screen reader only class -->
+    <style>
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
 </body>
 </html> 

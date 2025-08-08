@@ -1,4 +1,4 @@
-// Post verileri - Buraya yeni postlar ekleyebilirsiniz
+// Modern Post verileri - Buraya yeni postlar ekleyebilirsiniz
 const posts = [
     {
         id: 1,
@@ -9,68 +9,91 @@ const posts = [
     }
 ];
 
-// Sayaç değerleri - Bu değerleri değiştirebilirsiniz
+// Modern Sayaç değerleri - Bu değerleri değiştirebilirsiniz
 const stats = {
     posts: posts.length,
     experience: 3,
     readers: 1250
 };
 
-// DOM yüklendiğinde çalışacak fonksiyonlar
+// Modern DOM yüklendiğinde çalışacak fonksiyonlar
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobil menü toggle
+    // Modern scroll progress indicator
+    createScrollProgressIndicator();
+    
+    // Modern mobil menü toggle
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
 
-    // Hamburger menü toggle
+    // Modern hamburger menü toggle
     if (hamburger) {
         hamburger.addEventListener('click', function() {
+            const isActive = hamburger.classList.contains('active');
+            
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
+            
+            // Modern accessibility attributes
+            hamburger.setAttribute('aria-expanded', !isActive);
+            
+            // Modern body scroll lock
+            if (navMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
         });
     }
 
-    // Menü linklerine tıklandığında menüyü kapat
+    // Modern menü linklerine tıklandığında menüyü kapat
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
             if (hamburger) {
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
+                document.body.style.overflow = '';
             }
         });
     });
 
-    // Navbar scroll efekti
+    // Modern Navbar scroll efekti
     window.addEventListener('scroll', function() {
         const navbar = document.querySelector('.navbar');
         if (navbar) {
             if (window.scrollY > 100) {
-                navbar.style.background = 'rgba(0, 0, 0, 0.98)';
-                navbar.style.boxShadow = '0 2px 20px rgba(255, 255, 255, 0.1)';
-            } else {
                 navbar.style.background = 'rgba(0, 0, 0, 0.95)';
+                navbar.style.backdropFilter = 'blur(25px)';
+                navbar.style.webkitBackdropFilter = 'blur(25px)';
+                navbar.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.3)';
+            } else {
+                navbar.style.background = 'rgba(0, 0, 0, 0.8)';
+                navbar.style.backdropFilter = 'blur(20px)';
+                navbar.style.webkitBackdropFilter = 'blur(20px)';
                 navbar.style.boxShadow = 'none';
             }
         }
+        
+        // Update scroll progress
+        updateScrollProgress();
     });
 
-    // Sayaçları güncelle
+    // Modern Sayaçları güncelle
     updateCounters();
 
-    // Postları yükle
+    // Modern Postları yükle
     loadPosts();
 
-    // Galeri filtreleme
+    // Modern Galeri filtreleme
     initGalleryFilters();
     
-    // Photos filtreleme
+    // Modern Photos filtreleme
     initPhotosFilters();
 
-    // Fotoğraf yükleme özelliği
+    // Modern Fotoğraf yükleme özelliği
     initPhotoUpload();
 
-    // İstatistik sayaç animasyonu
+    // Modern İstatistik sayaç animasyonu
     const statElements = document.querySelectorAll('.stat-card h3, .stat-item h3');
     const statsObserver = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
@@ -87,27 +110,58 @@ document.addEventListener('DOMContentLoaded', function() {
         statsObserver.observe(stat);
     });
 
-    // Typing efekti için hero title
+    // Modern Typing efekti için hero title
     const heroTitle = document.querySelector('.hero-title');
     if (heroTitle) {
         const text = heroTitle.textContent;
         heroTitle.textContent = '';
-        typeWriter(heroTitle, text, 0, 100);
+        typeWriter(heroTitle, text, 0, 80);
     }
+
+    // Modern Parallax efekti
+    initParallaxEffects();
+
+    // Modern Keyboard shortcuts
+    initKeyboardShortcuts();
+
+    // Modern Lazy loading
+    initLazyLoading();
 });
 
-// Galeri filtreleme fonksiyonu
+// Modern Scroll Progress Indicator
+function createScrollProgressIndicator() {
+    const indicator = document.createElement('div');
+    indicator.className = 'scroll-indicator';
+    indicator.innerHTML = '<div class="scroll-progress"></div>';
+    document.body.appendChild(indicator);
+}
+
+function updateScrollProgress() {
+    const scrollProgress = document.querySelector('.scroll-progress');
+    if (scrollProgress) {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.body.offsetHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        scrollProgress.style.width = scrollPercent + '%';
+    }
+}
+
+// Modern Galeri filtreleme fonksiyonu
 function initGalleryFilters() {
     const filterBtns = document.querySelectorAll('.gallery-filters .filter-btn');
     const galleryItems = document.querySelectorAll('.gallery-item');
 
     filterBtns.forEach(btn => {
         btn.addEventListener('click', function() {
-            // Aktif buton stilini güncelle
-            filterBtns.forEach(b => b.classList.remove('active'));
+            // Modern aktif buton stilini güncelle
+            filterBtns.forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-pressed', 'false');
+            });
             this.classList.add('active');
+            this.setAttribute('aria-pressed', 'true');
 
-            // Filtreleme
+            // Modern filtreleme
             const filter = this.getAttribute('data-filter');
             
             galleryItems.forEach(item => {
@@ -115,7 +169,7 @@ function initGalleryFilters() {
                 
                 if (filter === 'all' || category === filter) {
                     item.style.display = 'block';
-                    item.style.animation = 'fadeInUp 0.6s ease-out';
+                    item.style.animation = 'fadeInScale 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
                 } else {
                     item.style.display = 'none';
                 }
@@ -124,18 +178,22 @@ function initGalleryFilters() {
     });
 }
 
-// Photos filtreleme fonksiyonu
+// Modern Photos filtreleme fonksiyonu
 function initPhotosFilters() {
     const filterBtns = document.querySelectorAll('.photos-filters .filter-btn');
     const photoItems = document.querySelectorAll('.photo-item');
 
     filterBtns.forEach(btn => {
         btn.addEventListener('click', function() {
-            // Aktif buton stilini güncelle
-            filterBtns.forEach(b => b.classList.remove('active'));
+            // Modern aktif buton stilini güncelle
+            filterBtns.forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-pressed', 'false');
+            });
             this.classList.add('active');
+            this.setAttribute('aria-pressed', 'true');
 
-            // Filtreleme
+            // Modern filtreleme
             const filter = this.getAttribute('data-filter');
             
             photoItems.forEach(item => {
@@ -143,7 +201,7 @@ function initPhotosFilters() {
                 
                 if (filter === 'all' || category === filter) {
                     item.style.display = 'block';
-                    item.style.animation = 'fadeInUp 0.6s ease-out';
+                    item.style.animation = 'fadeInScale 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
                 } else {
                     item.style.display = 'none';
                 }
@@ -152,27 +210,27 @@ function initPhotosFilters() {
     });
 }
 
-// Fotoğraf yükleme özelliği
+// Modern Fotoğraf yükleme özelliği
 function initPhotoUpload() {
-    // Profil fotoğrafı için
+    // Modern Profil fotoğrafı için
     const profilePhoto = document.getElementById('profile-image');
     const photoPlaceholder = document.getElementById('photo-placeholder');
     
     if (profilePhoto && photoPlaceholder) {
-        // Profil fotoğrafı yüklendiğinde placeholder'ı gizle
+        // Modern Profil fotoğrafı yüklendiğinde placeholder'ı gizle
         profilePhoto.addEventListener('load', function() {
             this.style.display = 'block';
             photoPlaceholder.style.display = 'none';
         });
 
-        // Profil fotoğrafı yüklenemediğinde placeholder'ı göster
+        // Modern Profil fotoğrafı yüklenemediğinde placeholder'ı göster
         profilePhoto.addEventListener('error', function() {
             this.style.display = 'none';
             photoPlaceholder.style.display = 'flex';
         });
     }
 
-    // Galeri fotoğrafları için
+    // Modern Galeri fotoğrafları için
     const galleryImages = document.querySelectorAll('.gallery-image');
     const imagePlaceholders = document.querySelectorAll('.image-placeholder');
 
@@ -180,13 +238,13 @@ function initPhotoUpload() {
         const placeholder = imagePlaceholders[index];
         
         if (img && placeholder) {
-            // Fotoğraf yüklendiğinde placeholder'ı gizle
+            // Modern Fotoğraf yüklendiğinde placeholder'ı gizle
             img.addEventListener('load', function() {
                 this.style.display = 'block';
                 placeholder.style.display = 'none';
             });
 
-            // Fotoğraf yüklenemediğinde placeholder'ı göster
+            // Modern Fotoğraf yüklenemediğinde placeholder'ı göster
             img.addEventListener('error', function() {
                 this.style.display = 'none';
                 placeholder.style.display = 'flex';
@@ -195,9 +253,9 @@ function initPhotoUpload() {
     });
 }
 
-// Sayaçları güncelle
+// Modern Sayaçları güncelle
 function updateCounters() {
-    // Ana sayfa sayaçları
+    // Modern Ana sayfa sayaçları
     const postsCount = document.getElementById('posts-count');
     const experienceYears = document.getElementById('experience-years');
     const readersCount = document.getElementById('readers-count');
@@ -206,7 +264,7 @@ function updateCounters() {
     if (experienceYears) experienceYears.textContent = stats.experience;
     if (readersCount) readersCount.textContent = stats.readers;
 
-    // About sayfası sayaçları
+    // Modern About sayfası sayaçları
     const aboutPostsCount = document.getElementById('about-posts-count');
     const aboutExperienceYears = document.getElementById('about-experience-years');
     const aboutReadersCount = document.getElementById('about-readers-count');
@@ -216,7 +274,7 @@ function updateCounters() {
     if (aboutReadersCount) aboutReadersCount.textContent = stats.readers;
 }
 
-// Postları yükle
+// Modern Postları yükle
 function loadPosts() {
     const container = document.getElementById('thoughts-container');
     if (!container) return;
@@ -227,7 +285,7 @@ function loadPosts() {
     });
 }
 
-// Post elementi oluştur
+// Modern Post elementi oluştur
 function createPostElement(post) {
     const article = document.createElement('article');
     article.className = 'thought-card';
@@ -238,7 +296,7 @@ function createPostElement(post) {
         <a href="#" class="read-more" data-post-id="${post.id}">Read More</a>
     `;
 
-    // Read More linkine tıklama
+    // Modern Read More linkine tıklama
     const readMoreLink = article.querySelector('.read-more');
     readMoreLink.addEventListener('click', function(e) {
         e.preventDefault();
@@ -248,15 +306,15 @@ function createPostElement(post) {
     return article;
 }
 
-// Post modal'ı göster
+// Modern Post modal'ı göster
 function showPostModal(post) {
-    // Mevcut modal'ı kaldır
+    // Modern Mevcut modal'ı kaldır
     const existingModal = document.querySelector('.post-modal');
     if (existingModal) {
         existingModal.remove();
     }
 
-    // Yeni modal oluştur
+    // Modern Yeni modal oluştur
     const modal = document.createElement('div');
     modal.className = 'post-modal';
     modal.innerHTML = `
@@ -273,7 +331,7 @@ function showPostModal(post) {
         </div>
     `;
 
-    // Modal stilleri
+    // Modern Modal stilleri
     modal.style.cssText = `
         position: fixed;
         top: 0;
@@ -294,26 +352,29 @@ function showPostModal(post) {
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        backdrop-filter: blur(5px);
+        background: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
     `;
 
     const content = modal.querySelector('.modal-content');
     content.style.cssText = `
-        background: #000;
-        border: 1px solid #333;
-        border-radius: 16px;
-        padding: 2.5rem;
-        max-width: 700px;
+        background: rgba(0, 0, 0, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        padding: 3rem;
+        max-width: 800px;
         width: 100%;
         max-height: 85vh;
         overflow-y: auto;
         position: relative;
         z-index: 1;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.9);
         transform: scale(0.9);
         opacity: 0;
-        transition: all 0.3s ease;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
     `;
 
     const header = modal.querySelector('.modal-header');
@@ -321,93 +382,106 @@ function showPostModal(post) {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 1.5rem;
-        padding-bottom: 1.5rem;
-        border-bottom: 1px solid #333;
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     `;
 
     header.querySelector('h2').style.cssText = `
         color: #fff;
-        font-size: 1.8rem;
-        font-weight: 700;
+        font-size: 2rem;
+        font-weight: 800;
         margin: 0;
         text-transform: capitalize;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     `;
 
     const closeBtn = modal.querySelector('.modal-close');
     closeBtn.style.cssText = `
         background: rgba(255, 255, 255, 0.1);
-        border: 1px solid #333;
+        border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 50%;
         color: #fff;
         font-size: 1.5rem;
         cursor: pointer;
         padding: 0;
-        width: 40px;
-        height: 40px;
+        width: 45px;
+        height: 45px;
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: all 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         font-weight: 300;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
     `;
 
     const date = modal.querySelector('.modal-date');
     date.style.cssText = `
-        color: #999;
-        font-size: 0.9rem;
-        margin-bottom: 1.5rem;
+        color: #a0a0a0;
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+        font-weight: 500;
     `;
 
     const body = modal.querySelector('.modal-body');
     body.style.cssText = `
-        color: #ccc;
+        color: #e0e0e0;
         line-height: 1.8;
         font-size: 1.1rem;
+        font-weight: 400;
     `;
     
-    // İçerik stillerini düzenle
+    // Modern İçerik stillerini düzenle
     const bodyContent = body.querySelector('p');
     if (bodyContent) {
         bodyContent.style.cssText = `
-            color: #ccc;
+            color: #e0e0e0;
             line-height: 1.8;
             font-size: 1.1rem;
             margin-bottom: 1.5rem;
+            font-weight: 400;
         `;
     }
     
-    // Başlık stillerini düzenle
+    // Modern Başlık stillerini düzenle
     const bodyH1 = body.querySelector('h1');
     if (bodyH1) {
         bodyH1.style.cssText = `
             color: #fff;
-            font-size: 2rem;
-            font-weight: 700;
+            font-size: 2.2rem;
+            font-weight: 800;
             margin-bottom: 1.5rem;
             margin-top: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         `;
     }
 
-    // Modal'ı sayfaya ekle
+    // Modern Modal'ı sayfaya ekle
     document.body.appendChild(modal);
 
-    // Kapatma işlevleri
+    // Modern Kapatma işlevleri
     closeBtn.addEventListener('click', () => modal.remove());
     overlay.addEventListener('click', () => modal.remove());
     
-    // Hover efektleri
+    // Modern Hover efektleri
     closeBtn.addEventListener('mouseenter', () => {
         closeBtn.style.background = 'rgba(255, 255, 255, 0.2)';
-        closeBtn.style.transform = 'scale(1.1)';
+        closeBtn.style.transform = 'scale(1.1) rotate(90deg)';
     });
     
     closeBtn.addEventListener('mouseleave', () => {
         closeBtn.style.background = 'rgba(255, 255, 255, 0.1)';
-        closeBtn.style.transform = 'scale(1)';
+        closeBtn.style.transform = 'scale(1) rotate(0deg)';
     });
 
-    // ESC tuşu ile kapatma
+    // Modern ESC tuşu ile kapatma
     document.addEventListener('keydown', function closeOnEsc(e) {
         if (e.key === 'Escape') {
             modal.remove();
@@ -415,14 +489,14 @@ function showPostModal(post) {
         }
     });
 
-    // Animasyon
+    // Modern Animasyon
     setTimeout(() => {
         content.style.transform = 'scale(1)';
         content.style.opacity = '1';
     }, 50);
 }
 
-// Sayaç animasyon fonksiyonu
+// Modern Sayaç animasyon fonksiyonu
 function animateCounter(element, start, end, duration) {
     const startTime = performance.now();
     
@@ -430,7 +504,10 @@ function animateCounter(element, start, end, duration) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
         
-        const current = Math.floor(start + (end - start) * progress);
+        // Modern easing function
+        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+        
+        const current = Math.floor(start + (end - start) * easeOutQuart);
         element.textContent = current + (element.textContent.includes('+') ? '+' : '');
         
         if (progress < 1) {
@@ -441,7 +518,7 @@ function animateCounter(element, start, end, duration) {
     requestAnimationFrame(updateCounter);
 }
 
-// Typewriter efekti
+// Modern Typewriter efekti
 function typeWriter(element, text, index, speed) {
     if (index < text.length) {
         element.textContent += text.charAt(index);
@@ -449,89 +526,135 @@ function typeWriter(element, text, index, speed) {
     }
 }
 
-// Sayfa yüklendiğinde loading efekti
+// Modern Parallax efektleri
+function initParallaxEffects() {
+    window.addEventListener('scroll', function() {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll('.abstract-shape');
+        
+        parallaxElements.forEach(element => {
+            const speed = 0.3;
+            element.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.02}deg)`;
+        });
+    });
+}
+
+// Modern Keyboard shortcuts
+function initKeyboardShortcuts() {
+    document.addEventListener('keydown', function(e) {
+        // Modern ESC tuşu ile mobil menüyü kapat
+        if (e.key === 'Escape') {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            if (hamburger && navMenu) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+        
+        // Modern Space tuşu ile scroll
+        if (e.key === ' ' && e.target === document.body) {
+            e.preventDefault();
+            window.scrollBy(0, window.innerHeight);
+        }
+    });
+}
+
+// Modern Lazy loading
+function initLazyLoading() {
+    const images = document.querySelectorAll('img[data-src]');
+    
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.remove('lazy');
+                imageObserver.unobserve(img);
+            }
+        });
+    });
+    
+    images.forEach(img => imageObserver.observe(img));
+}
+
+// Modern Sayfa yüklendiğinde loading efekti
 window.addEventListener('load', function() {
     document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.5s ease';
+    document.body.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
     
     setTimeout(() => {
         document.body.style.opacity = '1';
     }, 100);
 });
 
-// Scroll to top butonu
+// Modern Scroll to top butonu
 function createScrollToTopButton() {
     const button = document.createElement('button');
     button.innerHTML = '↑';
     button.className = 'scroll-to-top';
     button.style.cssText = `
         position: fixed;
-        bottom: 20px;
-        right: 20px;
-        width: 50px;
-        height: 50px;
+        bottom: 30px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
         border-radius: 50%;
-        background: #fff;
-        color: #000;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #fff;
         border: none;
         cursor: pointer;
-        font-size: 20px;
+        font-size: 24px;
+        font-weight: 600;
         opacity: 0;
         visibility: hidden;
-        transition: all 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 1000;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
     `;
 
     document.body.appendChild(button);
 
-    // Scroll event listener
+    // Modern Scroll event listener
     window.addEventListener('scroll', function() {
-        if (window.scrollY > 300) {
+        if (window.scrollY > 500) {
             button.style.opacity = '1';
             button.style.visibility = 'visible';
+            button.style.transform = 'translateY(0)';
         } else {
             button.style.opacity = '0';
             button.style.visibility = 'hidden';
+            button.style.transform = 'translateY(20px)';
         }
     });
 
-    // Click event
+    // Modern Click event
     button.addEventListener('click', function() {
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         });
     });
+
+    // Modern Hover effects
+    button.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-3px) scale(1.1)';
+        this.style.boxShadow = '0 12px 40px rgba(0, 0, 0, 0.4)';
+    });
+
+    button.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1)';
+        this.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.3)';
+    });
 }
 
-// Scroll to top butonunu oluştur
+// Modern Scroll to top butonunu oluştur
 createScrollToTopButton();
 
-// Parallax efekti için
-window.addEventListener('scroll', function() {
-    const scrolled = window.pageYOffset;
-    const parallaxElements = document.querySelectorAll('.abstract-shape');
-    
-    parallaxElements.forEach(element => {
-        const speed = 0.5;
-        element.style.transform = `translateY(${scrolled * speed}px)`;
-    });
-});
-
-// Klavye kısayolları
-document.addEventListener('keydown', function(e) {
-    // ESC tuşu ile mobil menüyü kapat
-    if (e.key === 'Escape') {
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
-        if (hamburger && navMenu) {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-        }
-    }
-});
-
-// Yeni post ekleme fonksiyonu (geliştirici için)
+// Modern Yeni post ekleme fonksiyonu (geliştirici için)
 function addNewPost(title, excerpt, content, date) {
     const newPost = {
         id: posts.length + 1,
@@ -544,10 +667,10 @@ function addNewPost(title, excerpt, content, date) {
     posts.push(newPost);
     stats.posts = posts.length;
     
-    // Sayaçları güncelle
+    // Modern Sayaçları güncelle
     updateCounters();
     
-    // Eğer thoughts sayfasındaysak, yeni postu ekle
+    // Modern Eğer thoughts sayfasındaysak, yeni postu ekle
     const container = document.getElementById('thoughts-container');
     if (container) {
         const postElement = createPostElement(newPost);
@@ -557,7 +680,7 @@ function addNewPost(title, excerpt, content, date) {
     console.log('New post added:', newPost);
 }
 
-// Fotoğraf ekleme fonksiyonu (geliştirici için)
+// Modern Fotoğraf ekleme fonksiyonu (geliştirici için)
 function addGalleryImage(imageSrc, category, title, description) {
     const galleryGrid = document.querySelector('.gallery-grid');
     if (!galleryGrid) return;
@@ -581,7 +704,7 @@ function addGalleryImage(imageSrc, category, title, description) {
     console.log('New gallery image added:', { imageSrc, category, title, description });
 }
 
-// Örnek kullanım:
+// Modern Örnek kullanım:
 // addNewPost(
 //     "New Post Title",
 //     "This is the excerpt of the new post...",
