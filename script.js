@@ -5,7 +5,7 @@ const posts = [
         title: "first text",
         excerpt: "hello world this is my first blog text.",
         date: "August 7, 2025",
-        content: `<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><title>first text</title></head><body><h1>first text</h1><p>hello world this is my first blog text.</p><a href='index.html'>turn the homepage</a></body></html>`
+        content: `<h1>First Text</h1><p>Hello world, this is my first blog text. Welcome to my personal space where I share my thoughts and experiences.</p><p>This is just the beginning of my journey in sharing my perspective on life, technology, and everything in between.</p>`
     }
 ];
 
@@ -302,14 +302,18 @@ function showPostModal(post) {
     content.style.cssText = `
         background: #000;
         border: 1px solid #333;
-        border-radius: 12px;
-        padding: 2rem;
-        max-width: 600px;
+        border-radius: 16px;
+        padding: 2.5rem;
+        max-width: 700px;
         width: 100%;
-        max-height: 80vh;
+        max-height: 85vh;
         overflow-y: auto;
         position: relative;
         z-index: 1;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+        transform: scale(0.9);
+        opacity: 0;
+        transition: all 0.3s ease;
     `;
 
     const header = modal.querySelector('.modal-header');
@@ -317,31 +321,35 @@ function showPostModal(post) {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 1rem;
-        padding-bottom: 1rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.5rem;
         border-bottom: 1px solid #333;
     `;
 
     header.querySelector('h2').style.cssText = `
         color: #fff;
-        font-size: 1.5rem;
-        font-weight: 600;
+        font-size: 1.8rem;
+        font-weight: 700;
         margin: 0;
+        text-transform: capitalize;
     `;
 
     const closeBtn = modal.querySelector('.modal-close');
     closeBtn.style.cssText = `
-        background: none;
-        border: none;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid #333;
+        border-radius: 50%;
         color: #fff;
-        font-size: 2rem;
+        font-size: 1.5rem;
         cursor: pointer;
         padding: 0;
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
+        transition: all 0.3s ease;
+        font-weight: 300;
     `;
 
     const date = modal.querySelector('.modal-date');
@@ -357,6 +365,29 @@ function showPostModal(post) {
         line-height: 1.8;
         font-size: 1.1rem;
     `;
+    
+    // İçerik stillerini düzenle
+    const bodyContent = body.querySelector('p');
+    if (bodyContent) {
+        bodyContent.style.cssText = `
+            color: #ccc;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        `;
+    }
+    
+    // Başlık stillerini düzenle
+    const bodyH1 = body.querySelector('h1');
+    if (bodyH1) {
+        bodyH1.style.cssText = `
+            color: #fff;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            margin-top: 0;
+        `;
+    }
 
     // Modal'ı sayfaya ekle
     document.body.appendChild(modal);
@@ -364,6 +395,17 @@ function showPostModal(post) {
     // Kapatma işlevleri
     closeBtn.addEventListener('click', () => modal.remove());
     overlay.addEventListener('click', () => modal.remove());
+    
+    // Hover efektleri
+    closeBtn.addEventListener('mouseenter', () => {
+        closeBtn.style.background = 'rgba(255, 255, 255, 0.2)';
+        closeBtn.style.transform = 'scale(1.1)';
+    });
+    
+    closeBtn.addEventListener('mouseleave', () => {
+        closeBtn.style.background = 'rgba(255, 255, 255, 0.1)';
+        closeBtn.style.transform = 'scale(1)';
+    });
 
     // ESC tuşu ile kapatma
     document.addEventListener('keydown', function closeOnEsc(e) {
@@ -377,7 +419,7 @@ function showPostModal(post) {
     setTimeout(() => {
         content.style.transform = 'scale(1)';
         content.style.opacity = '1';
-    }, 10);
+    }, 50);
 }
 
 // Sayaç animasyon fonksiyonu
